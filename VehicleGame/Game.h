@@ -7,6 +7,10 @@
 
 #include <iostream>
 #include <string>
+#include <random>
+#include <ctime>
+#include <chrono>
+#include <thread>
 
 
 
@@ -25,6 +29,7 @@ private:
 	void driveVehicleMenu();
 	void randomizeGasPrice();
 	void handleRandomEncounters(double distance, Vehicle* v);
+	void clearScreen();
 
 public:
 	void loop();

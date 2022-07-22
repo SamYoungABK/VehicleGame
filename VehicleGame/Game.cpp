@@ -1,10 +1,9 @@
 #include "Game.h"
-#include <iostream>
-#include <random>
-#include <ctime>
-#include <string>
 
 using std::string;
+using namespace std::chrono;
+using namespace std::this_thread;
+
 
 void Game::loop()
 {
@@ -13,6 +12,7 @@ void Game::loop()
 
 	while (running)
 	{
+		clearScreen();
 		printf("\n---------------------------------------------------\n");
 		printf("\nMoney: $%4.2f\n", m_money);
 		printf("\nFuel Price: $%4.2f/gal\n", m_gasPrice);
@@ -25,6 +25,7 @@ void Game::loop()
 		printf("  4. Drive Vehicle\n");
 		printf("(1,2,3,4): ");
 		std::cin >> userInput;
+		clearScreen();
 		switch (userInput) {
 		case '1':
 			newVehicleMenu();
@@ -41,6 +42,7 @@ void Game::loop()
 		default:
 			printf("Invalid option.\n");
 		}
+		sleep_for(seconds(3));
 	}
 }
 
@@ -68,6 +70,7 @@ void Game::renameVehicleMenu()
 
 Vehicle* Game::selectVehicle()
 {
+	clearScreen();
 	int vehicleIndex;
 	printf("\n\nType the position of Vehicle in the list:\n");
 	m_vm.listVehicles();
@@ -83,6 +86,7 @@ Vehicle* Game::selectVehicle()
 
 	printf("Selected: \n");
 	m_vm.getVehicle(vehicleIndex)->output();
+	clearScreen();
 	return m_vm.getVehicle(vehicleIndex);
 }
 
@@ -100,14 +104,17 @@ void Game::newVehicleMenu()
 	{
 	case '1':
 		if (!spendMoney(1000)) return;
+		printf("Purchased car!");
 		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::CAR);
 		break;
 	case '2':
 		if (!spendMoney(2000)) return;
+		printf("Purchased boat!");
 		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::BOAT);
 		break;
 	case '3':
 		if (!spendMoney(5000)) return;
+		printf("Purchased airplane!");
 		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::PLANE);
 		break;
 	}
@@ -117,11 +124,11 @@ bool Game::spendMoney(int cost)
 {
 	if (m_money < cost)
 	{
-		printf("Not enough money!! You're short by $%4.2f\n", cost - m_money);
+		printf("\nNot enough money!! You're short by $%4.2f\n", cost - m_money);
 		return false;
 	}
 	m_money -= cost;
-	printf("Spent %d\n", cost);
+	printf("\nSpent $%d\n", cost);
 	return true;
 }
 
@@ -221,4 +228,8 @@ void Game::handleRandomEncounters(double distance, Vehicle* v)
 	}
 
 
+}
+
+void Game::clearScreen() {
+	system("cls");
 }
