@@ -18,6 +18,24 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="airplane.cpp" />
+    <ClCompile Include="boat.cpp" />
+    <ClCompile Include="car.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="vehicle.cpp" />
+    <ClCompile Include="VehicleManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="airplane.h" />
+    <ClInclude Include="boat.h" />
+    <ClInclude Include="car.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="vehicle.h" />
+    <ClInclude Include="VehicleManager.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,24 +156,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\airplane.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\boat.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\car.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\Game.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\main.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\vehicle.cpp" />
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\VehicleManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\airplane.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\boat.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\car.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\Game.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\main.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\vehicle.h" />
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\VehicleManager.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

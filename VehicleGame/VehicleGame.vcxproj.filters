@@ -15,48 +15,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\VehicleManager.cpp">
+    <ClCompile Include="car.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\airplane.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\boat.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\car.cpp">
+    <ClCompile Include="vehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\Game.cpp">
+    <ClCompile Include="VehicleManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\main.cpp">
+    <ClCompile Include="airplane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LUUExercises\Module2_Chapter4_Challenge\vehicle.cpp">
+    <ClCompile Include="boat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\airplane.h">
+    <ClInclude Include="airplane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\boat.h">
+    <ClInclude Include="boat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\car.h">
+    <ClInclude Include="car.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\Game.h">
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\main.h">
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\vehicle.h">
+    <ClInclude Include="vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\LUUExercises\Module2_Chapter4_Challenge\VehicleManager.h">
+    <ClInclude Include="VehicleManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
