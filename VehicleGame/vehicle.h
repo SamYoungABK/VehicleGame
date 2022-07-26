@@ -9,17 +9,17 @@ class Vehicle
 public:
 	enum class VEHICLE_TYPE
 	{
-		UNDEFINED,
-		CAR,
-		BOAT,
-		PLANE
+		Undefined,
+		Car,
+		Boat,
+		Plane
 	};
 
 	enum class VEHICLE_DRIVE_RESULT
 	{
-		NOT_ENOUGH_FUEL,
-		INVALID_DISTANCE,
-		SUCCESS,
+		Not_Enough_Fuel,
+		Negative_Distance,
+		Success,
 	};
 
 protected:
@@ -46,5 +46,7 @@ public:
 	void output();
 	bool addFuel(int amount);
 
-	virtual VEHICLE_DRIVE_RESULT drive(double distance) = 0;
+	bool NotEnoughFuel(double distance);
+	VEHICLE_DRIVE_RESULT Drive(double distance);
+	virtual void SetRandomEncounters() = 0;
 };

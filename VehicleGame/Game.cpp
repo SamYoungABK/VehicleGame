@@ -105,17 +105,17 @@ void Game::newVehicleMenu()
 	case '1':
 		if (!spendMoney(1000)) return;
 		printf("Purchased car!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::CAR);
+		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Car);
 		break;
 	case '2':
 		if (!spendMoney(2000)) return;
 		printf("Purchased boat!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::BOAT);
+		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Boat);
 		break;
 	case '3':
 		if (!spendMoney(5000)) return;
 		printf("Purchased airplane!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::PLANE);
+		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Plane);
 		break;
 	}
 }
@@ -185,10 +185,10 @@ void Game::driveVehicleMenu()
 
 	switch (driveResult)
 	{
-	case Vehicle::VEHICLE_DRIVE_RESULT::NOT_ENOUGH_FUEL:
+	case Vehicle::VEHICLE_DRIVE_RESULT::Not_Enough_Fuel:
 		printf("Not enough fuel!");
 		return;
-	case Vehicle::VEHICLE_DRIVE_RESULT::INVALID_DISTANCE:
+	case Vehicle::VEHICLE_DRIVE_RESULT::Negative_Distance:
 		printf("Invlaid distance!");
 		return;
 	}

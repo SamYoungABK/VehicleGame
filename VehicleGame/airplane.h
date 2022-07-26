@@ -6,7 +6,7 @@ class Airplane :
 {
 public:
 	Airplane(double fuelCapacity = 1000, double fuelConsumption = 100) :
-		Vehicle(fuelCapacity, fuelConsumption) {}
+		Vehicle(fuelCapacity, fuelConsumption) {};
 
-	VEHICLE_DRIVE_RESULT drive(double distance) override;
+	void SetRandomEncounters() override;
 };

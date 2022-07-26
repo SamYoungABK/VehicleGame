@@ -13,6 +13,28 @@ void Vehicle::output()
 	printf("-------------------------------------\n\n");
 }
 
+Vehicle::VEHICLE_DRIVE_RESULT Vehicle::Drive(double distance)
+{
+	if (distance < 0)
+		return VEHICLE_DRIVE_RESULT::Negative_Distance;
+
+	if (NotEnoughFuel(distance))
+		return VEHICLE_DRIVE_RESULT::Not_Enough_Fuel;
+
+	// convert m_fuelConsumption from miles/gal to gallons/mi
+	double gallonsPerMile = 1 / m_fuelConsumption;
+
+	m_fuel -= distance * gallonsPerMile;
+	m_distanceDriven += distance;
+
+	return VEHICLE_DRIVE_RESULT::Success;
+}
+
+bool Vehicle::NotEnoughFuel(double distance)
+{
+	return (distance * 1 / m_fuelConsumption) > m_fuel;
+}
+
 bool Vehicle::addFuel(int amount)
 {
 	if ((m_fuel + amount) > m_fuelCapacity)

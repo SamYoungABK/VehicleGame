@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="car.cpp">
+    <ClCompile Include="Car.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -24,27 +24,27 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vehicle.cpp">
+    <ClCompile Include="Vehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VehicleManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="airplane.cpp">
+    <ClCompile Include="Airplane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="boat.cpp">
+    <ClCompile Include="Boat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="airplane.h">
+    <ClInclude Include="Airplane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="boat.h">
+    <ClInclude Include="Boat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="car.h">
+    <ClInclude Include="Car.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -53,7 +53,7 @@
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vehicle.h">
+    <ClInclude Include="Vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VehicleManager.h">

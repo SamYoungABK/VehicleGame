@@ -19,21 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="airplane.cpp" />
-    <ClCompile Include="boat.cpp" />
-    <ClCompile Include="car.cpp" />
+    <ClCompile Include="Airplane.cpp" />
+    <ClCompile Include="Boat.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="vehicle.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="VehicleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="airplane.h" />
-    <ClInclude Include="boat.h" />
-    <ClInclude Include="car.h" />
+    <ClInclude Include="Airplane.h" />
+    <ClInclude Include="Boat.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="vehicle.h" />
+    <ClInclude Include="Vehicle.h" />
     <ClInclude Include="VehicleManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

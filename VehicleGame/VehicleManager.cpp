@@ -12,24 +12,24 @@ VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
 	double fuelCapacity,
 	double fuelConsumption)
 {
-	if (vehicleType == Vehicle::VEHICLE_TYPE::UNDEFINED)
+	if (vehicleType == Vehicle::VEHICLE_TYPE::Undefined)
 		return VEHICLE_MANAGER_ERROR::UNDEFINED_VEHICLE_TYPE;
 
-	if (vehicleType == Vehicle::VEHICLE_TYPE::CAR)
+	if (vehicleType == Vehicle::VEHICLE_TYPE::Car)
 	{
 		Car* carToAdd = new Car();
 		carToAdd->m_name = (string)"Car" + (char)('0' + m_vehicleList.size());
 
 		m_vehicleList.push_back(carToAdd);
 	}
-	else if (vehicleType == Vehicle::VEHICLE_TYPE::BOAT)
+	else if (vehicleType == Vehicle::VEHICLE_TYPE::Boat)
 	{
 		Boat* boatToAdd = new Boat();
 		boatToAdd->m_name = (string)"Boat" + (char)('0' + m_vehicleList.size());
 
 		m_vehicleList.push_back(boatToAdd);
 	}
-	else if (vehicleType == Vehicle::VEHICLE_TYPE::PLANE)
+	else if (vehicleType == Vehicle::VEHICLE_TYPE::Plane)
 	{
 		Airplane* planeToAdd = new Airplane();
 		planeToAdd->m_name = (string)"Airplane" + (char)('0' + m_vehicleList.size());

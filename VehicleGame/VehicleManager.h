@@ -19,7 +19,7 @@ private:
 
 public:
 	VEHICLE_MANAGER_ERROR newVehicle(
-		Vehicle::VEHICLE_TYPE vehicleType = Vehicle::VEHICLE_TYPE::UNDEFINED,
+		Vehicle::VEHICLE_TYPE vehicleType = Vehicle::VEHICLE_TYPE::Undefined,
 		double fuelCapacity = 0,
 		double fuelConsumption = 0);
 
