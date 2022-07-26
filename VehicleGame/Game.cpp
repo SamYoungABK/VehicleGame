@@ -4,6 +4,15 @@ using std::string;
 using namespace std::chrono;
 using namespace std::this_thread;
 
+void Game::Init()
+{
+	// seed the random number generator
+	std::srand(std::time(nullptr));
+	PrintTitleScreen();
+	ClearScreen();
+	Loop();
+}
+
 void Game::Loop()
 {
 	bool running = true;
@@ -32,6 +41,27 @@ void Game::Loop()
 		}
 		sleep_for(seconds(3));
 	}
+}
+
+void Game::PrintTitleScreen() {
+	printf(" __      __  _     _      _       _____                      \n");
+	printf(" \\ \\    / / | |   (_)    | |     / ____|                     \n");
+	printf("  \\ \\  / ___| |__  _  ___| | ___| |  __  __ _ _ __ ___   ___ \n");
+	printf("   \\ \\/ / _ | '_ \\| |/ __| |/ _ | | |_ |/ _` | '_ ` _ \\ / _ \\ \n");
+	printf("    \\  |  __| | | | | (__| |  __| |__| | (_| | | | | | |  __/\n");
+	printf("     \\/ \\___|_| |_|_|\\___|_|\\___|\\_____|\\__,_|_| |_| |_|\\___|\n\n");
+	printf(" - A Game With No Real Objective Outside of Buying Vehicles And Amassing Wealth\n");
+	printf("   from some rather silly random events.\n\n\n");
+	printf("Game starting in 5...\n");
+	sleep_for(seconds(3));
+	printf("4...\n");
+	sleep_for(seconds(1));
+	printf("3...\n");
+	sleep_for(seconds(1));
+	printf("2...\n");
+	sleep_for(seconds(1));
+	printf("1!\n");
+	sleep_for(seconds(1));
 }
 
 void Game::PrintScore()
@@ -245,7 +275,7 @@ int Game::CalculateNumEncounters(double distance)
 {
 	int numEncounters = distance / 100;
 
-	std::srand(std::time(nullptr));
+	
 	// 50% chance to get an additional encounter.
 	(std::rand() % 2 == 1) ? numEncounters++ : 0;
 
@@ -254,7 +284,7 @@ int Game::CalculateNumEncounters(double distance)
 
 string Game::GetRandomEncounterText(Vehicle* v)
 {
-	int randomEncounterIndex = std::rand() % (v->m_randomEncounters->size());
+	int randomEncounterIndex = std::rand() % (v->m_randomEncounters.size());
 	string encounterText = v->m_randomEncounters[randomEncounterIndex];
 
 	return encounterText;

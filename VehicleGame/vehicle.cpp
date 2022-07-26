@@ -14,6 +14,7 @@ void Vehicle::Output()
 
 Vehicle::VEHICLE_DRIVE_RESULT Vehicle::Drive(double distance)
 {
+	SetRandomEncounters();
 	if (distance < 0)
 		return VEHICLE_DRIVE_RESULT::Negative_Distance;
 

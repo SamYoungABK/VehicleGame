@@ -35,8 +35,10 @@ private:
 	int CalculateNumEncounters(double distance);
 	string GetRandomEncounterText(Vehicle* v);
 	double CalculateMoneyEarned(double distance);
+	void PrintTitleScreen();
 
 public:
+	void Init();
 	void Loop();
 
 };

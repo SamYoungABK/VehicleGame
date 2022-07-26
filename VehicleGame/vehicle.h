@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include <random>
+#include <vector>
 
 using std::string;
+using std::vector;
 
 class Vehicle
 {
@@ -29,10 +31,10 @@ protected:
 	double m_fuelConsumption = 0;
 
 public:
-	string m_randomEncounters[3] = {
-"",
-"",
-""
+	vector<string> m_randomEncounters = {
+"                                                                              ",
+"                                                                              ",
+"                                                                              "
 	};
 
 	string m_name = "";
