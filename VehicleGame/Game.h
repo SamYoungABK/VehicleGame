@@ -21,18 +21,18 @@ private:
 	double m_gasPrice = 2.00;
 
 	VehicleManager m_vm;
-	void newVehicleMenu();
-	bool spendMoney(int cost);
-	void renameVehicleMenu();
-	Vehicle* selectVehicle();
-	void fuelVehicleMenu();
-	void driveVehicleMenu();
-	void randomizeGasPrice();
-	void handleRandomEncounters(double distance, Vehicle* v);
-	void clearScreen();
+	void NewVehicleMenu();
+	bool SpendMoney(int cost);
+	void RenameVehicleMenu();
+	Vehicle* SelectVehicle();
+	void FuelVehicleMenu();
+	void DriveVehicleMenu();
+	void RandomizeGasPrice();
+	void HandleRandomEncounters(double distance, Vehicle* v);
+	void ClearScreen();
 
 public:
-	void loop();
+	void Loop();
 
 };
 

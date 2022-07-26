@@ -10,23 +10,23 @@ class VehicleManager
 public:
 	enum class VEHICLE_MANAGER_ERROR
 	{
-		SUCCESS,
-		UNDEFINED_VEHICLE_TYPE,
+		Success,
+		Undefined_Vehicle_Type,
 	};
 
 private:
 	vector<Vehicle*> m_vehicleList;
 
 public:
-	VEHICLE_MANAGER_ERROR newVehicle(
+	VEHICLE_MANAGER_ERROR NewVehicle(
 		Vehicle::VEHICLE_TYPE vehicleType = Vehicle::VEHICLE_TYPE::Undefined,
 		double fuelCapacity = 0,
 		double fuelConsumption = 0);
 
-	int getVehicleCount();
-	Vehicle* getVehicle(int index);
-	vector<Vehicle*> getVehicle(string name);
+	int GetVehicleCount();
+	Vehicle* GetVehicle(int index);
+	vector<Vehicle*> GetVehicle(string name);
 
-	void listVehicles();
+	void ListVehicles();
 };
 

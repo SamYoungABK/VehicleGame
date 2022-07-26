@@ -7,13 +7,13 @@
 using std::string;
 
 
-VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
+VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::NewVehicle(
 	Vehicle::VEHICLE_TYPE vehicleType,
 	double fuelCapacity,
 	double fuelConsumption)
 {
 	if (vehicleType == Vehicle::VEHICLE_TYPE::Undefined)
-		return VEHICLE_MANAGER_ERROR::UNDEFINED_VEHICLE_TYPE;
+		return VEHICLE_MANAGER_ERROR::Undefined_Vehicle_Type;
 
 	if (vehicleType == Vehicle::VEHICLE_TYPE::Car)
 	{
@@ -37,20 +37,20 @@ VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
 		m_vehicleList.push_back(planeToAdd);
 	}
 
-	return VEHICLE_MANAGER_ERROR::SUCCESS;
+	return VEHICLE_MANAGER_ERROR::Success;
 }
 
-Vehicle* VehicleManager::getVehicle(int index)
+Vehicle* VehicleManager::GetVehicle(int index)
 {
 	return m_vehicleList[index];
 }
 
-int VehicleManager::getVehicleCount()
+int VehicleManager::GetVehicleCount()
 {
 	return m_vehicleList.size();
 }
 
-vector<Vehicle*> VehicleManager::getVehicle(string name)
+vector<Vehicle*> VehicleManager::GetVehicle(string name)
 {
 	vector<Vehicle*> result;
 
@@ -63,7 +63,7 @@ vector<Vehicle*> VehicleManager::getVehicle(string name)
 	return result;
 }
 
-void VehicleManager::listVehicles()
+void VehicleManager::ListVehicles()
 {
 	if (m_vehicleList.size() == 0)
 		return;
@@ -71,6 +71,6 @@ void VehicleManager::listVehicles()
 	printf("\nVehicle List: \n");
 	for (Vehicle* v : m_vehicleList)
 	{
-		v->output();
+		v->Output();
 	}
 }

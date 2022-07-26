@@ -30,7 +30,7 @@ protected:
 	double m_fuelConsumption = 0;
 
 public:
-	string randomEncounters[3] = {
+	string m_randomEncounters[3] = {
 "",
 "",
 ""
@@ -40,11 +40,11 @@ public:
 
 	Vehicle(double fuelCapacity = 0,
 		double fuelConsumption = 0) :
-		m_fuelCapacity{ fuelCapacity },
-		m_fuelConsumption{ fuelConsumption } {}
+		m_fuelCapacity( fuelCapacity ),
+		m_fuelConsumption( fuelConsumption ) {}
 
-	void output();
-	bool addFuel(int amount);
+	void Output();
+	bool AddFuel(int amount);
 
 	bool NotEnoughFuel(double distance);
 	VEHICLE_DRIVE_RESULT Drive(double distance);

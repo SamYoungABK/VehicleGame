@@ -4,20 +4,19 @@ using std::string;
 using namespace std::chrono;
 using namespace std::this_thread;
 
-
-void Game::loop()
+void Game::Loop()
 {
 	bool running = true;
 	char userInput;
 
 	while (running)
 	{
-		clearScreen();
+		ClearScreen();
 		printf("\n---------------------------------------------------\n");
 		printf("\nMoney: $%4.2f\n", m_money);
 		printf("\nFuel Price: $%4.2f/gal\n", m_gasPrice);
 		printf("\n---------------------------------------------------\n");
-		m_vm.listVehicles();
+		m_vm.ListVehicles();
 		printf("\nOptions:\n");
 		printf("  1. Purchase Vehicle\n");
 		printf("  2. Rename Vehicle\n");
@@ -25,19 +24,19 @@ void Game::loop()
 		printf("  4. Drive Vehicle\n");
 		printf("(1,2,3,4): ");
 		std::cin >> userInput;
-		clearScreen();
+		ClearScreen();
 		switch (userInput) {
 		case '1':
-			newVehicleMenu();
+			NewVehicleMenu();
 			break;
 		case '2':
-			renameVehicleMenu();
+			RenameVehicleMenu();
 			break;
 		case '3':
-			fuelVehicleMenu();
+			FuelVehicleMenu();
 			break;
 		case '4':
-			driveVehicleMenu();
+			DriveVehicleMenu();
 			break;
 		default:
 			printf("Invalid option.\n");
@@ -46,15 +45,15 @@ void Game::loop()
 	}
 }
 
-void Game::renameVehicleMenu()
+void Game::RenameVehicleMenu()
 {
-	if (m_vm.getVehicleCount() <= 0)
+	if (m_vm.GetVehicleCount() <= 0)
 	{
 		printf("\nERROR: Can't rename vehicles that haven't been created yet!\n");
 		return;
 	}
 
-	Vehicle* selectedVehicle = selectVehicle();
+	Vehicle* selectedVehicle = SelectVehicle();
 	if (selectedVehicle == nullptr) return;
 
 	printf("What would you like to rename the vehicle to?\n");
@@ -68,29 +67,29 @@ void Game::renameVehicleMenu()
 	return;
 }
 
-Vehicle* Game::selectVehicle()
+Vehicle* Game::SelectVehicle()
 {
-	clearScreen();
+	ClearScreen();
 	int vehicleIndex;
 	printf("\n\nType the position of Vehicle in the list:\n");
-	m_vm.listVehicles();
-	printf("(0-%d): ", m_vm.getVehicleCount() - 1);
+	m_vm.ListVehicles();
+	printf("(0-%d): ", m_vm.GetVehicleCount() - 1);
 
 	std::cin >> vehicleIndex;
 
-	if (vehicleIndex < 0 || vehicleIndex >= m_vm.getVehicleCount())
+	if (vehicleIndex < 0 || vehicleIndex >= m_vm.GetVehicleCount())
 	{
 		printf("\nERROR: Vehicle index out of range.\n");
 		return nullptr;
 	}
 
 	printf("Selected: \n");
-	m_vm.getVehicle(vehicleIndex)->output();
-	clearScreen();
-	return m_vm.getVehicle(vehicleIndex);
+	m_vm.GetVehicle(vehicleIndex)->Output();
+	ClearScreen();
+	return m_vm.GetVehicle(vehicleIndex);
 }
 
-void Game::newVehicleMenu()
+void Game::NewVehicleMenu()
 {
 	char userInput;
 	printf("\n\nSelect Vehicle Type:\n");
@@ -103,24 +102,24 @@ void Game::newVehicleMenu()
 	switch (userInput)
 	{
 	case '1':
-		if (!spendMoney(1000)) return;
+		if (!SpendMoney(1000)) return;
 		printf("Purchased car!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Car);
+		m_vm.NewVehicle(Vehicle::VEHICLE_TYPE::Car);
 		break;
 	case '2':
-		if (!spendMoney(2000)) return;
+		if (!SpendMoney(2000)) return;
 		printf("Purchased boat!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Boat);
+		m_vm.NewVehicle(Vehicle::VEHICLE_TYPE::Boat);
 		break;
 	case '3':
-		if (!spendMoney(5000)) return;
+		if (!SpendMoney(5000)) return;
 		printf("Purchased airplane!");
-		m_vm.newVehicle(Vehicle::VEHICLE_TYPE::Plane);
+		m_vm.NewVehicle(Vehicle::VEHICLE_TYPE::Plane);
 		break;
 	}
 }
 
-bool Game::spendMoney(int cost)
+bool Game::SpendMoney(int cost)
 {
 	if (m_money < cost)
 	{
@@ -132,15 +131,15 @@ bool Game::spendMoney(int cost)
 	return true;
 }
 
-void Game::fuelVehicleMenu()
+void Game::FuelVehicleMenu()
 {
-	if (m_vm.getVehicleCount() <= 0)
+	if (m_vm.GetVehicleCount() <= 0)
 	{
 		printf("\nERROR: Can't add fuel to vehicles that haven't been created yet!\n");
 		return;
 	}
 
-	Vehicle* selectedVehicle = selectVehicle();
+	Vehicle* selectedVehicle = SelectVehicle();
 	if (selectedVehicle == nullptr) return;
 
 	printf("How much fuel would you like to buy? Gas Price: %4.2f\n", m_gasPrice);
@@ -154,9 +153,9 @@ void Game::fuelVehicleMenu()
 		return;
 	}
 
-	if (!spendMoney(fuelInput * m_gasPrice)) return;
+	if (!SpendMoney(fuelInput * m_gasPrice)) return;
 
-	selectedVehicle->addFuel(fuelInput);
+	selectedVehicle->AddFuel(fuelInput);
 	printf("Added %g fuel to vehicle named %s.\n",
 		fuelInput,
 		selectedVehicle->m_name.c_str());
@@ -164,15 +163,15 @@ void Game::fuelVehicleMenu()
 	return;
 }
 
-void Game::driveVehicleMenu()
+void Game::DriveVehicleMenu()
 {
-	if (m_vm.getVehicleCount() <= 0)
+	if (m_vm.GetVehicleCount() <= 0)
 	{
 		printf("\nERROR: Can't drive vehicles that haven't been created yet!\n");
 		return;
 	}
 
-	Vehicle* selectedVehicle = selectVehicle();
+	Vehicle* selectedVehicle = SelectVehicle();
 	if (selectedVehicle == nullptr) return;
 
 	printf("How far would you like to drive?\n");
@@ -196,19 +195,19 @@ void Game::driveVehicleMenu()
 	printf("Drove %s for %g miles.\n",
 		selectedVehicle->m_name.c_str(), distance);
 
-	randomizeGasPrice();
-	handleRandomEncounters(distance, selectedVehicle);
+	RandomizeGasPrice();
+	HandleRandomEncounters(distance, selectedVehicle);
 
 	return;
 }
 
-void Game::randomizeGasPrice()
+void Game::RandomizeGasPrice()
 {
 	std::srand(std::time(nullptr));
 	m_gasPrice = (double)(std::rand() % 300) / 100 + 2.00;
 }
 
-void Game::handleRandomEncounters(double distance, Vehicle* v)
+void Game::HandleRandomEncounters(double distance, Vehicle* v)
 {
 	std::srand(std::time(nullptr));
 	int numEncounters = distance / 100;
@@ -219,7 +218,7 @@ void Game::handleRandomEncounters(double distance, Vehicle* v)
 	{
 		int randomEncounterIndex = std::rand() % 3;
 
-		string encounterText = v->randomEncounters[randomEncounterIndex];
+		string encounterText = v->m_randomEncounters[randomEncounterIndex];
 		double moneyEarned = (double)(distance * 10.0) + (double)(std::rand() % (int)(distance * 10));
 
 		printf("%s You gain: $%.2f\n", encounterText.c_str(), moneyEarned);
@@ -230,6 +229,6 @@ void Game::handleRandomEncounters(double distance, Vehicle* v)
 
 }
 
-void Game::clearScreen() {
+void Game::ClearScreen() {
 	system("cls");
 }
