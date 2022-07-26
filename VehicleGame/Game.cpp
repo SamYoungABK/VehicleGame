@@ -114,7 +114,7 @@ void Game::NewVehicleMenu()
 	case '3':
 		if (!SpendMoney(5000)) return;
 		printf("Purchased airplane!");
-		m_vm.NewVehicle(Vehicle::VEHICLE_TYPE::Plane);
+		m_vm.NewVehicle(Vehicle::VEHICLE_TYPE::Airplane);
 		break;
 	}
 }
@@ -180,7 +180,7 @@ void Game::DriveVehicleMenu()
 	std::cin >> distance;
 
 	Vehicle::VEHICLE_DRIVE_RESULT driveResult =
-		selectedVehicle->drive(distance);
+		selectedVehicle->Drive(distance);
 
 	switch (driveResult)
 	{

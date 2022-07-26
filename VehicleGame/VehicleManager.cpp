@@ -7,6 +7,13 @@
 using std::string;
 
 
+string VehicleManager::GetDefaultName(string vehicleName)
+{
+	char number = '0' + m_vehicleList.size();
+
+	return vehicleName + number;
+}
+
 VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::NewVehicle(
 	Vehicle::VEHICLE_TYPE vehicleType,
 	double fuelCapacity,
@@ -15,27 +22,24 @@ VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::NewVehicle(
 	if (vehicleType == Vehicle::VEHICLE_TYPE::Undefined)
 		return VEHICLE_MANAGER_ERROR::Undefined_Vehicle_Type;
 
-	if (vehicleType == Vehicle::VEHICLE_TYPE::Car)
-	{
-		Car* carToAdd = new Car();
-		carToAdd->m_name = (string)"Car" + (char)('0' + m_vehicleList.size());
+	Vehicle* vehicleToAdd;
 
-		m_vehicleList.push_back(carToAdd);
+	switch (vehicleType) {
+	case Vehicle::VEHICLE_TYPE::Car:
+		vehicleToAdd = new Car();
+		vehicleToAdd->m_name = GetDefaultName("Car");
+		break;
+	case Vehicle::VEHICLE_TYPE::Boat:
+		vehicleToAdd = new Boat();
+		vehicleToAdd->m_name = GetDefaultName("Car");
+		break;
+	case Vehicle::VEHICLE_TYPE::Airplane:
+		vehicleToAdd = new Airplane();
+		vehicleToAdd->m_name = GetDefaultName("Car");
+		break;
 	}
-	else if (vehicleType == Vehicle::VEHICLE_TYPE::Boat)
-	{
-		Boat* boatToAdd = new Boat();
-		boatToAdd->m_name = (string)"Boat" + (char)('0' + m_vehicleList.size());
 
-		m_vehicleList.push_back(boatToAdd);
-	}
-	else if (vehicleType == Vehicle::VEHICLE_TYPE::Plane)
-	{
-		Airplane* planeToAdd = new Airplane();
-		planeToAdd->m_name = (string)"Airplane" + (char)('0' + m_vehicleList.size());
-
-		m_vehicleList.push_back(planeToAdd);
-	}
+	m_vehicleList.push_back(vehicleToAdd);
 
 	return VEHICLE_MANAGER_ERROR::Success;
 }
@@ -55,22 +59,15 @@ vector<Vehicle*> VehicleManager::GetVehicle(string name)
 	vector<Vehicle*> result;
 
 	for (Vehicle* v : m_vehicleList)
-	{
-		if (v->m_name == name)
-			result.push_back(v);
-	}
+		if (v->m_name == name) result.push_back(v);
 
 	return result;
 }
 
 void VehicleManager::ListVehicles()
 {
-	if (m_vehicleList.size() == 0)
-		return;
+	if (m_vehicleList.size() == 0) return;
 
 	printf("\nVehicle List: \n");
-	for (Vehicle* v : m_vehicleList)
-	{
-		v->Output();
-	}
+	for (Vehicle* v : m_vehicleList) v->Output();
 }

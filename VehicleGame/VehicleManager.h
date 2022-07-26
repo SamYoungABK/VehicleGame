@@ -1,8 +1,10 @@
 #pragma once
 #include "vehicle.h"
 #include <vector>
+#include <string>
 
 using std::vector;
+using std::string;
 
 
 class VehicleManager
@@ -16,6 +18,7 @@ public:
 
 private:
 	vector<Vehicle*> m_vehicleList;
+	string GetDefaultName(string VehicleName);
 
 public:
 	VEHICLE_MANAGER_ERROR NewVehicle(
