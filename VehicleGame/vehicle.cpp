@@ -1,6 +1,6 @@
 #include "Vehicle.h"
 
-void Vehicle::output()
+void Vehicle::Output()
 {
 	double fuelPercentage =
 		m_fuelCapacity != 0 ? m_fuel / m_fuelCapacity * 100 : 0;
@@ -35,7 +35,7 @@ bool Vehicle::NotEnoughFuel(double distance)
 	return (distance * 1 / m_fuelConsumption) > m_fuel;
 }
 
-bool Vehicle::addFuel(int amount)
+bool Vehicle::AddFuel(int amount)
 {
 	if ((m_fuel + amount) > m_fuelCapacity)
 		return false;
