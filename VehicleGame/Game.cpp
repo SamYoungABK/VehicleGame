@@ -11,20 +11,9 @@ void Game::Loop()
 
 	while (running)
 	{
-		ClearScreen();
-		printf("\n---------------------------------------------------\n");
-		printf("\nMoney: $%4.2f\n", m_money);
-		printf("\nFuel Price: $%4.2f/gal\n", m_gasPrice);
-		printf("\n---------------------------------------------------\n");
-		m_vm.ListVehicles();
-		printf("\nOptions:\n");
-		printf("  1. Purchase Vehicle\n");
-		printf("  2. Rename Vehicle\n");
-		printf("  3. Purchase Fuel For Vehicle\n");
-		printf("  4. Drive Vehicle\n");
-		printf("(1,2,3,4): ");
+		PrintMainMenu();
 		std::cin >> userInput;
-		ClearScreen();
+
 		switch (userInput) {
 		case '1':
 			NewVehicleMenu();
@@ -44,6 +33,29 @@ void Game::Loop()
 		sleep_for(seconds(3));
 	}
 }
+
+void Game::PrintScore()
+{
+	printf("\n---------------------------------------------------\n");
+	printf("\nMoney: $%4.2f\n", m_money);
+	printf("\nFuel Price: $%4.2f/gal\n", m_gasPrice);
+	printf("\n---------------------------------------------------\n");
+
+}
+
+void Game::PrintMainMenu()
+{
+	ClearScreen();
+	PrintScore();
+	m_vm.ListVehicles();
+	printf("\nOptions:\n");
+	printf("  1. Purchase Vehicle\n");
+	printf("  2. Rename Vehicle\n");
+	printf("  3. Purchase Fuel For Vehicle\n");
+	printf("  4. Drive Vehicle\n");
+	printf("(1,2,3,4): ");
+}
+
 
 void Game::RenameVehicleMenu()
 {
@@ -155,11 +167,16 @@ void Game::FuelVehicleMenu()
 
 	if (!SpendMoney(fuelInput * m_gasPrice)) return;
 
-	selectedVehicle->AddFuel(fuelInput);
-	printf("Added %g fuel to vehicle named %s.\n",
-		fuelInput,
-		selectedVehicle->m_name.c_str());
-
+	if(selectedVehicle->AddFuel(fuelInput))
+	{
+		printf("Added %g fuel to vehicle named %s.\n",
+			fuelInput,
+			selectedVehicle->m_name.c_str());
+	}
+	else
+	{
+		printf("Fuel exceeds car's fuel capacity. Unable to fuel.");
+	}
 	return;
 }
 
@@ -209,17 +226,12 @@ void Game::RandomizeGasPrice()
 
 void Game::HandleRandomEncounters(double distance, Vehicle* v)
 {
-	std::srand(std::time(nullptr));
-	int numEncounters = distance / 100;
-
-	(std::rand() % 2 == 1) ? numEncounters++ : 0;
+	int numEncounters = CalculateNumEncounters(distance);
 
 	for (int i = 0; i < numEncounters; ++i)
 	{
-		int randomEncounterIndex = std::rand() % 3;
-
-		string encounterText = v->m_randomEncounters[randomEncounterIndex];
-		double moneyEarned = (double)(distance * 10.0) + (double)(std::rand() % (int)(distance * 10));
+		string encounterText = GetRandomEncounterText(v);
+		double moneyEarned = CalculateMoneyEarned(distance);
 
 		printf("%s You gain: $%.2f\n", encounterText.c_str(), moneyEarned);
 
@@ -228,6 +240,30 @@ void Game::HandleRandomEncounters(double distance, Vehicle* v)
 
 
 }
+
+int Game::CalculateNumEncounters(double distance)
+{
+	int numEncounters = distance / 100;
+
+	std::srand(std::time(nullptr));
+	// 50% chance to get an additional encounter.
+	(std::rand() % 2 == 1) ? numEncounters++ : 0;
+
+	return numEncounters;
+}
+
+string Game::GetRandomEncounterText(Vehicle* v)
+{
+	int randomEncounterIndex = std::rand() % (v->m_randomEncounters->size());
+	string encounterText = v->m_randomEncounters[randomEncounterIndex];
+
+	return encounterText;
+}
+
+double Game::CalculateMoneyEarned(double distance) {
+	return (double)(std::rand() % (int)(distance * 10));
+}
+
 
 void Game::ClearScreen() {
 	system("cls");

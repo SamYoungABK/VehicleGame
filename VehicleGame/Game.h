@@ -30,6 +30,11 @@ private:
 	void RandomizeGasPrice();
 	void HandleRandomEncounters(double distance, Vehicle* v);
 	void ClearScreen();
+	void PrintScore();
+	void PrintMainMenu();
+	int CalculateNumEncounters(double distance);
+	string GetRandomEncounterText(Vehicle* v);
+	double CalculateMoneyEarned(double distance);
 
 public:
 	void Loop();
